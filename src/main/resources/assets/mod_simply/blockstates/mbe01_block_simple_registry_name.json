@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "mod_simply:mbe01_block_simple_model" }
+    }
+}

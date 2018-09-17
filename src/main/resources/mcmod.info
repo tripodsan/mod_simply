@@ -1,0 +1,12 @@
+[{
+  "modid": "mod_simply",
+  "name": "Simply Utilities",
+  "description": "Adds useful utilities",
+  "version": "1.0.0",
+  "mcversion": "${mcversion}",
+  "logoFile": "",
+  "url": "simply.wompking.com",
+  "updateUrl": "",
+  "authorList": ["Wompking"],
+  "credits": "I'd like to thank my mother and father."
+}]

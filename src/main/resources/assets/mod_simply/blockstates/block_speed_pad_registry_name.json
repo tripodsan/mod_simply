@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "normal": { "model": "mod_simply:block_speed_pad_model" },
+        "facing=north": { "model": "mod_simply:block_speed_pad_model"},
+        "facing=east": { "model": "mod_simply:block_speed_pad_model", "y": 90 },
+        "facing=south": { "model": "mod_simply:block_speed_pad_model", "y": 180 },
+        "facing=west": { "model": "mod_simply:block_speed_pad_model", "y": 270 }
+    }
+}

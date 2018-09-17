@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "up": "mod_simply:blocks/block_speed_pad_top",
+        "down": "mod_simply:blocks/block_speed_pad_side",
+        "north": "mod_simply:blocks/block_speed_pad_side",
+        "east": "mod_simply:blocks/block_speed_pad_side",
+        "south": "mod_simply:blocks/block_speed_pad_side",
+        "west": "mod_simply:blocks/block_speed_pad_side",
+        "particle": "mod_simply:blocks/block_speed_pad_side"
+    }
+}
