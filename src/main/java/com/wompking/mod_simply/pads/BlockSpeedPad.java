@@ -1,16 +1,24 @@
 package com.wompking.mod_simply.pads;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -32,6 +40,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * If that doesn't make sense to you yet, don't worry.  Just ignore the "deprecated method" warning.
  */
 public class BlockSpeedPad extends Block {
+
+    public static final Logger log = LogManager.getLogger();
+
     // Our block has two properties:
     // 1) PROPERTYFACING for which way the sign points (east, west, north, south).  EnumFacing is as standard used by vanilla for a number of blocks.
     public static final PropertyDirection PROPERTYFACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
@@ -115,4 +126,21 @@ public class BlockSpeedPad extends Block {
     }
 
 
+    @Override
+    public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
+        // only handle on server
+        if (worldIn.isRemote) {
+            return;
+        }
+
+//        EnumFacing facing = worldIn.getBlockState(pos).getValue(PROPERTYFACING);
+//        log.info("entity walk: facing: {} {} pos: {}", facing, entityIn, pos);
+//        Vec3i dir = facing.getDirectionVec();
+//        entityIn.addVelocity(dir.getX(), dir.getY(), dir.getZ());
+//        entityIn.velocityChanged = true;
+        if (entityIn instanceof EntityPlayer) {
+            PotionEffect pe = new PotionEffect(MobEffects.SPEED, 20, 10);
+            ((EntityPlayer) entityIn).addPotionEffect(pe);
+        }
+    }
 }

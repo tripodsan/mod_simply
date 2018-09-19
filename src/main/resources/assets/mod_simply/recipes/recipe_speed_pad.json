@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IYI",
+    "SBS",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "Y": {
+      "item": "minecraft:concrete",
+      "data": 4
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "B": {
+      "item": "minecraft:concrete",
+      "data": 15
+    }
+  },
+  "result": {
+    "item": "mod_simply:speed_pad"
+  }
+}

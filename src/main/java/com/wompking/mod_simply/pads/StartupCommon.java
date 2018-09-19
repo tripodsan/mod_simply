@@ -9,8 +9,8 @@ public class StartupCommon {
     public static ItemBlock itemSpeedPad;  // this holds the unique instance of the ItemBlock corresponding to your block
 
     public static void preInitCommon() {
-        blockSpeedPad = (BlockSpeedPad) (new BlockSpeedPad().setUnlocalizedName("block_speed_pad_unlocalised_name"));
-        blockSpeedPad.setRegistryName("block_speed_pad_registry_name");
+        blockSpeedPad = (BlockSpeedPad) (new BlockSpeedPad().setUnlocalizedName("speed_pad"));
+        blockSpeedPad.setRegistryName("speed_pad");
         ForgeRegistries.BLOCKS.register(blockSpeedPad);
 
         // We also need to create and register an ItemBlock for this block otherwise it won't appear in the inventory
