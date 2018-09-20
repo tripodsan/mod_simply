@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "mod_simply:mbe50_block_flame_emitter_model" }
+    }
+}
