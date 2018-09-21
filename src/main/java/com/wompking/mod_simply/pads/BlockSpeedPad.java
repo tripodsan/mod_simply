@@ -3,11 +3,13 @@ package com.wompking.mod_simply.pads;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.sun.javafx.geom.Vec3d;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -128,8 +130,8 @@ public class BlockSpeedPad extends Block {
 
     @Override
     public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
-        // only handle on server
-        if (worldIn.isRemote) {
+        // only handle on client
+        if (!worldIn.isRemote) {
             return;
         }
 
@@ -139,8 +141,17 @@ public class BlockSpeedPad extends Block {
 //        entityIn.addVelocity(dir.getX(), dir.getY(), dir.getZ());
 //        entityIn.velocityChanged = true;
         if (entityIn instanceof EntityPlayer) {
-            PotionEffect pe = new PotionEffect(MobEffects.SPEED, 20, 10);
-            ((EntityPlayer) entityIn).addPotionEffect(pe);
+            Vec3d m = new Vec3d(entityIn.motionX, entityIn.motionY, entityIn.motionZ);
+            double l = m.length();
+            if (l < 20) {
+                m.mul(2);
+                entityIn.setVelocity(m.x, m.y, m.z);
+                entityIn.velocityChanged = true;
+            }
+
+            ParticleEmitter emitter = new ParticleEmitter(worldIn, entityIn, 3);
+            Minecraft.getMinecraft().effectRenderer.addEffect(emitter);
+
         }
     }
 }
